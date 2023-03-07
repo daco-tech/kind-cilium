@@ -19,4 +19,5 @@ chmod +x ./setup-kind.sh
 # Credits:
 
 Kind Setup: https://kind.sigs.k8s.io/docs/user/quick-start/
+
 Cilium install on kind: https://docs.cilium.io/en/v1.9/gettingstarted/kind/
