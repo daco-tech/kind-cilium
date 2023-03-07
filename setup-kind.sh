@@ -238,9 +238,9 @@ createK8sCluster(){
     kind create cluster --config=./files/kind-config.yaml
     waitForWord "kubectl cluster-info --context kind-kind" "running"
     helm repo add cilium https://helm.cilium.io/
-    docker pull quay.io/cilium/cilium:v1.9.18
-    kind load docker-image quay.io/cilium/cilium:v1.9.18
-    helm install cilium cilium/cilium --version 1.9.18 \
+    docker pull quay.io/cilium/cilium:v1.13.0
+    kind load docker-image quay.io/cilium/cilium:v1.13.0
+    helm install cilium cilium/cilium --version 1.13.0 \
         --namespace kube-system \
         --set nodeinit.enabled=true \
         --set kubeProxyReplacement=partial \
@@ -259,14 +259,12 @@ setupCiliumTestPods(){
 }
 
 installCiliumHubble(){
-    helm upgrade cilium cilium/cilium --version 1.9.18 \
+    helm upgrade cilium cilium/cilium --version 1.13.0 \
         --namespace $CILIUM_NAMESPACE \
         --reuse-values \
         --set hubble.listenAddress=":4244" \
         --set hubble.relay.enabled=true \
         --set hubble.ui.enabled=true
-    kubectl port-forward -n $CILIUM_NAMESPACE svc/hubble-ui --address 0.0.0.0 --address :: 12000:80 &
-    logmsg "INFO" "Hubble is available (Port-Fwd) at: http://localhost:12000/"
 }
 
 
