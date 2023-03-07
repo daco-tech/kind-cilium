@@ -10,10 +10,11 @@ Ensure you have git and docker installed and properly configured/working on your
 # How to use:
 
 To run the script just execute:
-´´´ bash
+
+```bash
 chmod +x ./setup-kind.sh
 ./setup-kind.sh
-´´´
+```
 
 # Credits:
 
