@@ -203,6 +203,7 @@ installReq(){
     installTool git
     installTool golang
     installTool curl
+    installTool kindgit
 
     ## Test
     command -v curl >/dev/null 2>&1 || { echo >&2 "curl is required but it's not installed. Aborting."; exit 1; }
